@@ -1,6 +1,7 @@
 <?php 
-    $frase = '"Sono un simpatico paragrafo."';
+    $frase = 'Sono un simpatico paragrafo. Ma davvero molto simpatico.';
     $parolaCensurata = $_GET['parola'];
+    $paragrafoCensurato = str_replace($parolaCensurata, "***", $frase);
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +24,27 @@
 <p>    
     <?php 
         echo "La mia frase è lunga: " . strlen($frase) . " caratteri.";
+    ?>
+</p>
+
+<h3>
+    Parola da censurare:
+</h3>
+<form action="./index.php" method="get">
+    <label for="parola">Inserisci una parola da censurare:</label>
+    <input type="text" name="parola" id="parola">
+
+    <button type="submit">Invia</button>
+</form>
+
+<p>
+    <?php 
+    echo "La parola censurata è: " . $parolaCensurata;
+    ?>
+</p>
+<p>
+    <?php 
+        echo "Il paragrafo censurato è: " . $paragrafoCensurato . " Il paragrafo ora è lungo: " . strlen($paragrafoCensurato) . " caratteri.";
     ?>
 </p>
 
